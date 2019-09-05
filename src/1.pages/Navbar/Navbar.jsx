@@ -59,15 +59,19 @@ class NavbarComp extends Component {
                                             {
                                                 this.props.userObj.role == 'admin'
                                                 ?
+                                                <>
                                                 <Link style={{textDecoration:'none', color:'inherit'}} to="/admin/dashboard">
                                                     <DropdownItem>
                                                         Admin Dashboard
                                                     </DropdownItem>
+                                                    <DropdownItem onClick={this.onBtnLogout}>
+                                                    Logout
+                                                    </DropdownItem>
                                                 </Link>
+                                                </>
                                                 :
-                                                null
-                                            }
-                                            <Link to="/cart" style={{textDecoration:'none', color:'inherit'}}>
+                                                <>
+                                                <Link to="/cart" style={{textDecoration:'none', color:'inherit'}}>
                                                 <DropdownItem>
                                                     Cart
                                                 </DropdownItem>
@@ -81,7 +85,10 @@ class NavbarComp extends Component {
                                             <DropdownItem onClick={this.onBtnLogout}>
                                                 Logout
                                             </DropdownItem>
-                                        </DropdownMenu>
+                                            </>
+                                            }
+                                            </DropdownMenu>
+                                           
                                     </UncontrolledDropdown>
                                 </>
                                 :

@@ -39,7 +39,7 @@ class ProductDetails extends Component {
             productId : this.state.product.id,
             userId : this.props.id,
             quantity : parseInt(this.state.qtyInput),
-            price : this.state.product.harga,
+            price : parseInt(this.state.product.harga),
             img : this.state.product.img,
             discount : this.state.product.discount,
             productName : this.state.product.nama

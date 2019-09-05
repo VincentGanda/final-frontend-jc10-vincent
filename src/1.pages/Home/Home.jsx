@@ -18,6 +18,7 @@ class Home extends Component {
     componentDidMount(){
         this.getDataProducts()
         this.props.KartingEuy(this.props.id)
+        console.log(this.state.productData)
 
     }
     componentDidUpdate(){
@@ -37,6 +38,7 @@ class Home extends Component {
 
     renderProducts = () => {
         let jsx = this.state.productData.map(val => {
+            console.log(this.state.productData)
             return(
                 <ProductBox nama={val.nama} harga={val.harga} discount={val.discount} img={val.img} idProduct={val.id} />
             )
@@ -90,7 +92,7 @@ class Home extends Component {
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         id : state.user.id
         
