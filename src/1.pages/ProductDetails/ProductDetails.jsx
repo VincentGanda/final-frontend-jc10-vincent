@@ -17,8 +17,11 @@ class ProductDetails extends Component {
 
     componentDidMount(){
         this.getProductDetails()
+        this.props.KartingEuy(this.props.id)
     }
-
+    componentDidUpdate(){
+        this.props.KartingEuy(this.props.id)
+    }
     getProductDetails = () => {
         // localhost:2000/products/2
         Axios.get(urlApi + 'products/' + this.props.match.params.id)
@@ -48,6 +51,7 @@ class ProductDetails extends Component {
                 cartObj.quantity = parseInt(res.data[0].quantity) + parseInt(this.state.qtyInput)
                 Axios.put(urlApi + 'cart/' + res.data[0].id, cartObj)
                 .then((res) => {
+                   this.props.KartingEuy(this.props.id)
                     swal('Add to cart', 'Item added to cart', 'success')
 
                 })
@@ -57,7 +61,7 @@ class ProductDetails extends Component {
             }else{
                 Axios.post(urlApi + 'cart', cartObj)
                 .then((res) => {
-                    KartingEuy(this.props.id)
+                    this.props.KartingEuy(this.props.id)
                     swal('Add to cart', 'Item added to cart', 'success')
                 })
                 .catch((err) => {

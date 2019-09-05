@@ -7,6 +7,7 @@ import swal from 'sweetalert'
 import Carousel from '../../2.components/General/Carousel'
 import {Link} from 'react-router-dom'
 import { toggleUserId } from '../../redux/1.actions';
+import {KartingEuy} from '../../redux/1.actions'
 
 // GIT PULL ORIGIN MASTER
 class Home extends Component {
@@ -14,10 +15,13 @@ class Home extends Component {
         productData : []
     }
 
-    
-
     componentDidMount(){
         this.getDataProducts()
+        this.props.KartingEuy(this.props.id)
+
+    }
+    componentDidUpdate(){
+        this.props.KartingEuy(this.props.id)
     }
 
     getDataProducts = () => {
@@ -34,7 +38,7 @@ class Home extends Component {
     renderProducts = () => {
         let jsx = this.state.productData.map(val => {
             return(
-                <ProductBox nama={val.nama} harga={val.harga} discount={val.discount} img={val.img} id={val.id} />
+                <ProductBox nama={val.nama} harga={val.harga} discount={val.discount} img={val.img} idProduct={val.id} />
             )
         })
         return jsx
@@ -84,8 +88,13 @@ class Home extends Component {
     }
 }
 
-export default connect(state => {
+
+
+const mapStateToProps = state => {
     return {
-        username : state.user.username
+        id : state.user.id
+        
     }
-}, {toggleUserId})(Home)
+}
+
+export default connect(mapStateToProps ,{KartingEuy})(Home)

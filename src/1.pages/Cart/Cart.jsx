@@ -3,6 +3,8 @@ import Axios from 'axios'
 import {connect} from 'react-redux'
 import {urlApi} from '../../3.helpers/database'
 import swal from 'sweetalert'
+import {KartingEuy} from '../../redux/1.actions'
+import {Link} from 'react-router-dom'
 
 class Cart extends Component {
     state = {
@@ -20,6 +22,11 @@ class Cart extends Component {
 
     componentDidMount(){
         this.getDataCart(this.props.id)
+        this.props.KartingEuy(this.props.id)
+       
+    }
+    componentDidUpdate(){
+        this.props.KartingEuy(this.props.id)
     }
 
     deleteCartItem = (id) => {
@@ -97,6 +104,7 @@ class Cart extends Component {
             Axios.post(urlApi + 'history', newData)
             .then(res=>{
                 console.log(res)
+                this.props.KartingEuy(this.props.id)
                 
             })
             .catch(err=>{
@@ -106,6 +114,7 @@ class Cart extends Component {
                 Axios.delete(urlApi + 'cart/' + this.state.cartData[i].id)
                 .then(res=> {
                     console.log(res)
+                    
                 this.getDataCart()
                 })
                 .catch(err => console.log(err))
@@ -170,13 +179,17 @@ class Cart extends Component {
                         <div className="col-8">
                         <input type="button" className="btn btn-success" value="CHECKOUT" onClick={()=> this.setState({isCheckout:!this.state.isCheckout})}/>
                         </div>
+                        {/* {this.TotalPrice()} */}
                         { 
-                         this.renderCart() == 0
+                         this.state.cartData.length > 0
                          ?
-                         alert ('Cart anda kosong')
-                         :
                          <div className="col-4">
                             <h3>Total Harga = {this.TotalPrice()}</h3>
+                        </div>
+                         :
+                         <div className="col-4">
+                            <h1>Cart Anda Kosong</h1>
+                            <Link to="/"> <input type="button" value="back to menu"/></Link>
                         </div>
                         }
                         
@@ -227,4 +240,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps ,{KartingEuy})(Cart)

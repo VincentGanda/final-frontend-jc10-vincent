@@ -19,6 +19,6 @@ export default (state = INITIAL_STATE, action) => {
         case 'COOKIE_CHECKED':
             return {...state, cookie : true}
         default:
-            return state
+            return state 
     }
 }
