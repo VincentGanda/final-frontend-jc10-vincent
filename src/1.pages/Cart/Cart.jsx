@@ -5,6 +5,7 @@ import {urlApi} from '../../3.helpers/database'
 import swal from 'sweetalert'
 import {KartingEuy} from '../../redux/1.actions'
 import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class Cart extends Component {
     state = {
@@ -53,6 +54,7 @@ class Cart extends Component {
 
     renderCart = () => {
         var jsx = this.state.cartData.map((val, idx) => {
+            
             return (
                 <tr>
                     <td>{val.productName}</td>
@@ -158,6 +160,9 @@ class Cart extends Component {
     }
 
     render() {
+        if (this.props.id == 0){
+            return (<Redirect to="/" exact />)
+        }else if (this.props.id !==0){
         return (
             <div className="container">
                 <table className="table mt-3 text-center">
@@ -228,7 +233,7 @@ class Cart extends Component {
                   
                 </table>
             </div>
-        );
+        );}
     }
 }
 
