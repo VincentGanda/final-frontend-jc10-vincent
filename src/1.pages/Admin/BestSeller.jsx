@@ -1,48 +1,80 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import { urlApi } from '../../3.helpers/database';
-import {connect} from 'react-redux'
+import Axios from 'axios'
+import swal from 'sweetalert'
+import {urlApi} from '../../3.helpers/database'
 
 class BestSeller extends Component {
-    state ={
-        data: null
+    state= {
+        productData: ""
     }
     componentDidMount(){
-        Axios.get(urlApi + 'history' + this.props.items)
-        .then((res)=>{
-            this.setState({data: res.data})
-            console.log(res)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        this.getDataProducts()
     }
-    renderBestSeller = () => {
-        var jsx = this.state.data((val)=>{
-            return(
-                <div>
-                    TOP 3 BEST SELLING
-                    <table>
-                        <tr>
-                            <td>Nama Barang</td>
-                        </tr>
-                        <tr>
-                            <td>{val.items.productName}</td>
-                        </tr>
-                        <tr>
+    
+    getDataProducts = () => {
+        Axios.get(urlApi + 'history')
+        .then((res)=>{
+            var arr = []
+            for(var i=0; i< res.data.length; i++){
+                for(var x = 0; x < res.data[i].items.length; x++){
+                    arr.push(res.data[i].items[x].productId.toString())
+                    
+                }
+            }
+            let tempData = {}
+            let axiosPromises = []
+            for(let i = 0;i < arr.length;i++){
+                axiosPromises.push(Axios.get(urlApi + 'products/' + arr[i]))
+            }
+            Axios.all(axiosPromises).then(res => {
+                for(let i = 0;i < res.length;i++){
+                    tempData[res[i].data.nama] = 
+                    tempData.hasOwnProperty(res[i].data.nama) 
+                        ? 
+                    tempData[res[i].data.nama] + 1 
+                        :
+                    1
+                }
+            Object.keys(tempData).forEach(function(key) {
+            
+                document.getElementById('tbody').innerHTML += `
+                <tr>
+                        <td>${key}</td>
+                    <td>${tempData[key]}</td>
 
-                        </tr>
-                    </table>
-                </div>
-            )
+                    </tr>
+                `
+              })
+            })
         })
-        return jsx
+
     }
     render() {
-        console.log(this.props.items)
         return (
-            <div>
-                
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="card shadow mt-3">
+                            <div className="card-header border-0 pt-5">
+
+                            </div>
+                            <div className="card-body">
+                                <table className="table table-dark text-white rounded">
+                                    <thead className="text-center">
+                                        <tr>
+                                            <th>Nama Item</th>
+                                            <th>Jumlah terjual</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody" className="text-center">
+                                            {this.getDataProducts()}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         );
     }

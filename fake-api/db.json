@@ -213,16 +213,6 @@
       "discount": 0,
       "productName": "Something In Coffee",
       "id": 17
-    },
-    {
-      "productId": 3,
-      "userId": 2,
-      "quantity": 2,
-      "price": 30000,
-      "img": "https://ecs7.tokopedia.net/img/product-1/2018/7/27/27345219/27345219_c9909d3f-8e63-4581-a242-63995611577d_1000_1000.jpg",
-      "discount": 20,
-      "productName": "Epic Comeback",
-      "id": 18
     }
   ],
   "history": [

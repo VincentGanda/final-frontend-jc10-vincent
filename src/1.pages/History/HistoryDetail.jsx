@@ -8,7 +8,7 @@ class HistoryDetail extends Component {
         data: null
     }
     componentDidMount(){
-        Axios.get(urlApi + 'history?userId=' + this.props.id +'&id='+this.props.location.state.transactionId )
+        Axios.get(urlApi + 'history?userId=' + this.props.id + '&id='+this.props.location.state.transactionId )
         .then((res)=>{
             this.setState({data: res.data})
             console.log(res.data)
