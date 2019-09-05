@@ -4,6 +4,7 @@ import { urlApi } from '../../3.helpers/database';
 import {connect} from 'react-redux'
 import './History.css'
 import {Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class History extends Component {
     state = {
@@ -56,18 +57,22 @@ class History extends Component {
         console.log(this.props.id)
         if(this.state.data === null){
             return('apapun')
+        }else if (this.props.id == 0){
+           return( <Redirect to="/" exact /> )
         }
+        
         return (
             <div>
                 
                 <table>
                 
-                
+                 
                 {this.renderHistory()}
                 
                 </table>
             </div>
         );
+        
     }
 }
 
