@@ -160,7 +160,7 @@
     {
       "productId": 3,
       "userId": 2,
-      "quantity": "1",
+      "quantity": 1,
       "price": 30000,
       "img": "https://ecs7.tokopedia.net/img/product-1/2018/7/27/27345219/27345219_c9909d3f-8e63-4581-a242-63995611577d_1000_1000.jpg",
       "discount": 20,
@@ -293,6 +293,69 @@
       "postalCode": "5000",
       "address": "Kemanapun",
       "id": 5
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "productId": 3,
+          "userId": 1,
+          "quantity": 1,
+          "price": 30000,
+          "img": "https://ecs7.tokopedia.net/img/product-1/2018/7/27/27345219/27345219_c9909d3f-8e63-4581-a242-63995611577d_1000_1000.jpg",
+          "discount": 20,
+          "productName": "Epic Comeback",
+          "id": 5
+        }
+      ],
+      "time": "2019-9 - 4",
+      "TotalPrice": 24000,
+      "recipient": "Adria",
+      "postalCode": "1341414",
+      "address": "fwisbfwswf",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "productId": 3,
+          "userId": 1,
+          "quantity": 9,
+          "price": 30000,
+          "img": "https://ecs7.tokopedia.net/img/product-1/2018/7/27/27345219/27345219_c9909d3f-8e63-4581-a242-63995611577d_1000_1000.jpg",
+          "discount": 20,
+          "productName": "Epic Comeback",
+          "id": 5
+        }
+      ],
+      "time": "2019-9 - 4",
+      "TotalPrice": 216000,
+      "recipient": "Lian",
+      "postalCode": "12345",
+      "address": "UPH",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "productId": 3,
+          "userId": 1,
+          "quantity": 5,
+          "price": 30000,
+          "img": "https://ecs7.tokopedia.net/img/product-1/2018/7/27/27345219/27345219_c9909d3f-8e63-4581-a242-63995611577d_1000_1000.jpg",
+          "discount": 20,
+          "productName": "Epic Comeback",
+          "id": 5
+        }
+      ],
+      "time": "2019-9 - 5",
+      "TotalPrice": 120000,
+      "recipient": "Bernad",
+      "postalCode": "134",
+      "address": "kemanasaja",
+      "id": 8
     }
   ]
 }

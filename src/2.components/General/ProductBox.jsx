@@ -28,10 +28,11 @@ const ProductBox = (props) => {
                 <p className="card-text">Rp. {new Intl.NumberFormat('id-ID').format(props.harga - (props.harga * (props.discount/100)))}</p>
             </div>
             <div className="card-footer" style={{backgroundColor:'inherit'}}>
-                <input type='button' className='d-block btn btn-primary btn-block' value='Add To Cart' />
+                <Link to={"/product-details/" + props.id}><input type='button' className='d-block btn btn-primary btn-block' value='Add To Cart' /></Link>
             </div>
         </div>
     );
 };
+
 
 export default ProductBox;

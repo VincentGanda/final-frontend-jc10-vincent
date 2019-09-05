@@ -138,14 +138,17 @@ export const cookieChecker = () => {
     }
 }
 
-export const KartingEuy = () => {
+export const KartingEuy = (apapun) => {
     return(dispatch) => {
-        dispatch({
+        Axios.get(urlApi + 'cart?userId=' + apapun )
+        .then((res)=>{
+            dispatch({
             type: 'CARTING',
             payload : {
-                
+                cartLength: res.data.length
             }
-        })
+        })})
+        
     }
 }
 

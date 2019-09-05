@@ -39,7 +39,9 @@ class NavbarComp extends Component {
                                 this.props.userObj.username !== '' && this.props.userObj.role !== ''
                                 ?
                                 <>
-                                   
+                                   <NavItem>
+                                       Jumlah Barang {this.props.cart}
+                                   </NavItem>
                                     <NavItem>
                                         <NavLink>{this.props.userObj.showId ? this.props.userObj.id : null}</NavLink>
                                     </NavItem>
@@ -102,7 +104,8 @@ class NavbarComp extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userObj : state.user
+        userObj : state.user,
+        cart : state.cart.cartLength
         
     }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { urlApi } from '../../3.helpers/database';
 import {connect} from 'react-redux'
+import './History.css'
+import {Link} from 'react-router-dom'
 
 class History extends Component {
     state = {
@@ -25,11 +27,16 @@ class History extends Component {
                 <div>
                 <table>
                 <tr>
-                    <td>id</td>
-                    <td>waktu</td>
-                    <td>totalPrice</td>
-                    <td>Penerima</td>
-                    <td>Alamat</td>
+                    <th>id</th>
+                    <th>waktu</th>
+                    <th>totalPrice</th>
+                    <th>Penerima</th>
+                    <th>Alamat</th>
+                    <Link to = {{pathname: '/history-detail/' + val.id ,state: {
+                        transactionId: val.id
+                    }}}>
+                        <th>click untuk detail</th>
+                    </Link>
                 </tr>
                 <tr>
                     <td>{val.id}</td>
@@ -37,6 +44,7 @@ class History extends Component {
                     <td>{val.TotalPrice}</td>
                     <td>{val.recipient}</td>
                     <td>{val.address}</td>
+                    <td></td>
                 </tr>
                 </table>
                 </div>
@@ -51,7 +59,13 @@ class History extends Component {
         }
         return (
             <div>
+                
+                <table>
+                
+                
                 {this.renderHistory()}
+                
+                </table>
             </div>
         );
     }

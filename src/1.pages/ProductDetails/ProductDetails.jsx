@@ -5,6 +5,7 @@ import {urlApi} from '../../3.helpers/database'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import swal from 'sweetalert'
+import {KartingEuy} from '../../redux/1.actions'
 
 class ProductDetails extends Component {
 
@@ -48,6 +49,7 @@ class ProductDetails extends Component {
                 Axios.put(urlApi + 'cart/' + res.data[0].id, cartObj)
                 .then((res) => {
                     swal('Add to cart', 'Item added to cart', 'success')
+
                 })
                 .catch((err) => {
                     console.log(err)
@@ -55,6 +57,7 @@ class ProductDetails extends Component {
             }else{
                 Axios.post(urlApi + 'cart', cartObj)
                 .then((res) => {
+                    KartingEuy(this.props.id)
                     swal('Add to cart', 'Item added to cart', 'success')
                 })
                 .catch((err) => {
@@ -142,7 +145,9 @@ const mapStateToProps = state => {
     return {
         username : state.user.username,
         id : state.user.id
+        
+        
     }
 }
 
-export default connect(mapStateToProps)(ProductDetails)
+export default connect(mapStateToProps,{KartingEuy})(ProductDetails)

@@ -44,8 +44,6 @@ class Cart extends Component {
         })
     }
 
-    
-
     renderCart = () => {
         var jsx = this.state.cartData.map((val, idx) => {
             return (
@@ -172,9 +170,17 @@ class Cart extends Component {
                         <div className="col-8">
                         <input type="button" className="btn btn-success" value="CHECKOUT" onClick={()=> this.setState({isCheckout:!this.state.isCheckout})}/>
                         </div>
-                        <div className="col-4">
+                        { 
+                         this.renderCart() == 0
+                         ?
+                         alert ('Cart anda kosong')
+                         :
+                         <div className="col-4">
                             <h3>Total Harga = {this.TotalPrice()}</h3>
                         </div>
+                        }
+                        
+                        
                     </div>
                     {this.state.isCheckout
                     ?

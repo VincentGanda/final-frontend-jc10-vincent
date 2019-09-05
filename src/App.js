@@ -11,6 +11,7 @@ import ProductDetails from './1.pages/ProductDetails/ProductDetails';
 import Cart from './1.pages/Cart/Cart';
 import AdminDashboard from './1.pages/Admin/AdminDashboard';
 import History from './1.pages/History/History';
+import HistoryDetail from './1.pages/History/HistoryDetail';
 
 
 let cookieObj = new Cookie()
@@ -20,6 +21,7 @@ class App extends Component {
     let cookieVar = cookieObj.get('userData')
     if(cookieVar){
       this.props.keepLogin(cookieVar)
+      console.log(this.props.keepLogin(cookieVar))
     }else{
       this.props.cookieChecker()
     }
@@ -38,6 +40,7 @@ class App extends Component {
             <Route component={Cart} path='/cart' exact />
             <Route component={AdminDashboard} path='/admin/dashboard' exact />
             <Route component={History} path='/history' exact/>
+            <Route component={HistoryDetail} path='/history-detail/:id' exact/>
           </Switch>
         </div>
       )
