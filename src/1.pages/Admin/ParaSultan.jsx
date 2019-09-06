@@ -5,27 +5,29 @@ import {connect} from 'react-redux'
 class ParaSultan extends Component {
     state = {
         data: []
+    
     }
+    
     componentDidMount(){
         Axios.get(urlApi + 'history')
         .then((res)=>{
             this.setState({data: res.data})
-            console.log(res.data)
+           
         })
         .catch((err)=>{
             console.log(err)
         })
     }
     fangsienSultan = () => {
-        let result = 0
-        this.state.data.map((val)=>{
-            result = Math.max(val.TotalPrice)
-        
+        var jsx = this.state.data.map((val)=>{
+            return(
+               <p>{val.TotalPrice}</p> 
+            )
         })
-        return result
+       return jsx
+        
     } 
-    
-    
+  
     render() {
         return (
             <div className="container">
@@ -37,7 +39,7 @@ class ParaSultan extends Component {
                             </div>
                             <div className="card-body">
                                 <table className="table table-dark text-white rounded">
-                                    <p>Sultan kita adalah {this.fangsienSultan()} </p>
+                                    <p>Sultan kita adalah dengan pembelajaan tertinggi sebesar {this.fangsienSultan()} </p>
                                 </table>
                                 
                             </div>
@@ -49,5 +51,11 @@ class ParaSultan extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return{
+        id: state.user.id,
+        items: state.user.id
+    }
+}
 
-export default ParaSultan;
+export default connect (mapStateToProps)(ParaSultan);

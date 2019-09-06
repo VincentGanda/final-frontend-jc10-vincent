@@ -76,12 +76,18 @@ class History extends Component {
             //    }
             <div>
                 
-                <table>
+               {
+                   this.state.data !== 0
+                   ?
+                   <table>
                
                  
                 {this.renderHistory()}
                 
                 </table>
+                    :
+                    <h1>Your cart is empty, <Link to="/">let's go shopping</Link></h1>
+               } 
             </div>
         );
         
