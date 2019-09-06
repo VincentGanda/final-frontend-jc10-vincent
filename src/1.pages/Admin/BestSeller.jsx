@@ -68,8 +68,11 @@ class BestSeller extends Component {
                                     </thead>
                                     <tbody id="tbody" className="text-center">
                                             {this.getDataProducts()}
+                                            
                                     </tbody>
                                 </table>
+                                <p>udah keburu dibuat, sayang dihapus</p>
+                                <p>ini jumlah dari tiap' barang yang kejual</p>
                             </div>
                         </div>
 

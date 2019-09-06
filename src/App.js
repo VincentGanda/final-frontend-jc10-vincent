@@ -12,7 +12,7 @@ import Cart from './1.pages/Cart/Cart';
 import AdminDashboard from './1.pages/Admin/AdminDashboard';
 import History from './1.pages/History/History';
 import HistoryDetail from './1.pages/History/HistoryDetail';
-
+import Wishlist from './1.pages/Navbar/Wishlist'
 
 let cookieObj = new Cookie()
 class App extends Component {
@@ -41,6 +41,8 @@ class App extends Component {
             <Route component={AdminDashboard} path='/admin/dashboard' exact />
             <Route component={History} path='/history' exact/>
             <Route component={HistoryDetail} path='/history-detail/:id' exact/>
+            <Route component={Wishlist} path= '/wishlist' exact />
+            
           </Switch>
         </div>
       )

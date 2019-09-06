@@ -51,6 +51,9 @@ class NavbarComp extends Component {
                                     <NavItem>
                                         <NavLink>{this.props.userObj.role}</NavLink>
                                     </NavItem>
+                                    <NavItem>
+                                        <Link to='./wishlist'>Wishlist</Link>
+                                    </NavItem>
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
                                             Options

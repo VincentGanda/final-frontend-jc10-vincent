@@ -62,10 +62,22 @@ class History extends Component {
         }
         
         return (
+            // { 
+            //     this.state.cartData.length > 0
+            //     ?
+            //     <div className="col-4">
+            //        <h3>Total Harga = {this.TotalPrice()}</h3>
+            //    </div>
+            //     :
+            //     <div className="col-4">
+            //        <h1>Your cart is empty, <Link to="/">let's go shopping</Link> </h1>
+                   
+            //    </div>
+            //    }
             <div>
                 
                 <table>
-                
+               
                  
                 {this.renderHistory()}
                 

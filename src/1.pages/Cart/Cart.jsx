@@ -193,8 +193,8 @@ class Cart extends Component {
                         </div>
                          :
                          <div className="col-4">
-                            <h1>Cart Anda Kosong</h1>
-                            <Link to="/"> <input type="button" value="back to menu"/></Link>
+                            <h1>Your cart is empty, <Link to="/">let's go shopping</Link> </h1>
+                            
                         </div>
                         }
                         

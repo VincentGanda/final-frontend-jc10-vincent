@@ -9,6 +9,7 @@ import {Redirect} from 'react-router-dom'
 import ManageProduct from './ManageProduct';
 import ParaSultan from './ParaSultan';
 import BestSeller from './BestSeller';
+import Analitik from './Analitik'
 
 class AdminDashboard extends Component {
     state = {
@@ -27,13 +28,15 @@ class AdminDashboard extends Component {
             <>
                 <div className="admin-tab text-center d-flex mt-2 shadow">
                     <div style={{flex:1}} onClick={() => this.setState({tabMenu : 1})} className={'admin-tab-menu ' + (this.state.tabMenu == 1 ? "admin-tab-selected" : null)}>Manage Product</div>
-                    <div style={{flex:1}} onClick={() => this.setState({tabMenu : 2})} className={'admin-tab-menu ' + (this.state.tabMenu == 2 ? "admin-tab-selected" : null)}>Best Selling Products</div>
-                    <div style={{flex:1}} onClick={() => this.setState({tabMenu : 3})} className={'admin-tab-menu ' + (this.state.tabMenu == 3 ? "admin-tab-selected" : null)}>Para Sultan</div>
+                    <div style={{flex:1}} onClick={() => this.setState({tabMenu : 2})} className={'admin-tab-menu ' + (this.state.tabMenu == 2 ? "admin-tab-selected" : null)}>Bonus Buat Theo</div>
+                    <div style={{flex:1}} onClick={() => this.setState({tabMenu : 3})} className={'admin-tab-menu ' + (this.state.tabMenu == 3 ? "admin-tab-selected" : null)}>Analitik</div>
+                    <div style={{flex:1}} onClick={() => this.setState({tabMenu : 4})} className={'admin-tab-menu ' + (this.state.tabMenu == 3 ? "admin-tab-selected" : null)}>Para Sultan</div>
                 </div>
                 <div className="admin-content">
                     {this.state.tabMenu == 1 ? <ManageProduct/> : null}
-                    {this.state.tabMenu == 3 ? <ParaSultan/> : null}
+                    {this.state.tabMenu == 4 ? <ParaSultan/> : null}
                     {this.state.tabMenu == 2 ? <BestSeller /> : null}
+                    {this.state.tabMenu == 3 ? <Analitik /> : null}
                 </div>
             </>
         );
